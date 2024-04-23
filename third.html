@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missing Number Finder</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Missing Number Finder</h1>
+    <p>Series of numbers: 11, 12, 14, 15, 16, 18, 19, 20</p>
+    <button onclick="findMissing()">Find Missing Number</button>
+    <p id="result"></p>
+</div>
+
+<script>
+    function findMissing() {
+        const numbers = [11, 12, 14, 15, 16, 18, 19, 20];
+        const missingNumber = findMissingNumber(numbers);
+
+        const result = document.getElementById('result');
+        if (missingNumber !== null) {
+            result.textContent =  `Missing Number: ${missingNumber} `;
+        } else {
+            result.textContent = 'No missing number found in the series.';
+        }
+    }
+
+    function findMissingNumber(numbers) {
+        if (!Array.isArray(numbers) || numbers.length === 0) {
+            return null;
+        }
+
+        numbers.sort((a, b) => a - b);
+
+        for (let i = 0; i < numbers.length - 1; i++) {
+            if (numbers[i + 1] - numbers[i] !== 1) {
+                return numbers[i] + 1;
+            }
+        }
+
+        return null;
+    }
+</script>
+</body>
+</html>

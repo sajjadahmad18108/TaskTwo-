@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MinMax Finder</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        text-align: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>MinMax Finder</h1>
+    <input type="text" id="inputNumbers" placeholder="Enter numbers separated by commas">
+    <button onclick="findMinMax()">Find MinMax</button>
+    <p id="result"></p>
+</div>
+
+<script>
+    function findMinMax() {
+        const inputNumbers = document.getElementById('inputNumbers').value;
+        const numbersArray = inputNumbers.split(',').map(num => Number(num.trim()));
+
+        const { min, max } = findMinMaxInArray(numbersArray);
+
+        const result = document.getElementById('result');
+        result.innerHTML = ` Minimum: ${min}, Maximum: ${max} `;
+    }
+
+    function findMinMaxInArray(numbers) {
+        if (!Array.isArray(numbers) || numbers.length === 0) {
+            return { min: null, max: null };
+        }
+
+        let min = numbers[0];
+        let max = numbers[0];
+
+        for (let i = 1; i < numbers.length; i++) {
+            if (numbers[i] < min) {
+                min = numbers[i];
+            }
+            if (numbers[i] > max) {
+                max = numbers[i];
+            }
+        }
+
+        return { min, max };
+    }
+</script>
+ <button class="btn"> <a href="third.html"> Next Program</a> </button>
+</body>
+</html>

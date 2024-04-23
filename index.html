@@ -1,11 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+        .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+        /* a{
+            display: ;
+        } */
+    </style>
 </head>
+
 <body>
-    <h1>task two</h1>
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <input type="text" id="inputText" placeholder="Enter a string">
+        <button onclick="checkPalindrome()">Check</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function isPalindrome(str) {
+            const len = str.length;
+            for (let i = 0; i < len / 2; i++) {
+                if (str[i] !== str[len - 1 - i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function checkPalindrome() {
+            const inputText = document.getElementById('inputText').value;
+            const result = document.getElementById('result');
+
+            if (isPalindrome(inputText)) {
+                result.textContent =  `${inputText} is a palindrome! `;
+            } else {
+                result.textContent =  `${inputText} is not a palindrome`;
+            }
+        }
+
+    </script> 
+  <button class="btn"> <a href="second.html"> Next Program</a> </button>
 </body>
+
 </html>
